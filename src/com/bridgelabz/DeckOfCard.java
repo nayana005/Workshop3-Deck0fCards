@@ -3,7 +3,7 @@ package com.bridgelabz;
 import java.util.Scanner;
 
 public class DeckOfCard {
-	static Scanner sc = new Scanner(System.in);
+	static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		DeckOfCard deckOfCards = new DeckOfCard();
@@ -32,15 +32,22 @@ public class DeckOfCard {
 	}
 
 	void addPlayers(){
-		int numOfPlayers;
-		do {
-			System.out.println("Enter number of players (2 to 4): ");
-			numOfPlayers = sc.nextInt();
-		} while (numOfPlayers < 2 || numOfPlayers > 4);
-		for (int i = 0; i < numOfPlayers; i++) {
-			Player.addPlayer(new Player());
-		}
-		System.out.println("players added: "+numOfPlayers);
-	}
+		
+		System.out.println("\n Enter number of players minimum 2 , maximum 4");
+        int player = scanner.nextInt();
+        if (player >= 2 && player <= 4) {
+            System.out.println(player + "players will  play the game");
+            sequenceOfPlay(player);
+        } else {
+            System.out.println("please enter number of players in the Range");
+            this.addPlayers();
+        }
+    }
+		
+	public void sequenceOfPlay(int player) {
+        for (int i = 1; i < player; i++) {
+            System.out.println("player " + i + " Getting card:");
+        }
+    }
 
 }
